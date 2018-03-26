@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace _4Enemies
+namespace _5Bullets
 {
     public class Player
     {

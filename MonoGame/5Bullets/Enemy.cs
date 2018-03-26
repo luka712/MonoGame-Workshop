@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace _4Enemies
+namespace _5Bullets
 {
     public class Enemy
     {
