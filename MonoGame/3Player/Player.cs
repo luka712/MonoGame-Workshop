@@ -18,7 +18,7 @@ namespace _3Player
         public void Update(GameTime gameTime)
         {
             var keyboardState = Keyboard.GetState();
-            var moveAmount = (int)(Constants.PlayerSpeed * gameTime.TotalGameTime.Milliseconds);
+            var moveAmount = (int)(Constants.PlayerSpeed * gameTime.ElapsedGameTime.TotalMilliseconds);
 
             if (keyboardState.IsKeyDown(Keys.A)) drawRectangle.X -= moveAmount;
             if (keyboardState.IsKeyDown(Keys.D)) drawRectangle.X += moveAmount;

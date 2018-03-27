@@ -12,7 +12,7 @@ namespace _1FirstSprite
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        Texture2D sprite;
+        Texture2D playerSprite;
 
         public Game1()
         {
@@ -43,7 +43,7 @@ namespace _1FirstSprite
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            sprite = Content.Load<Texture2D>("player");
+            playerSprite = Content.Load<Texture2D>("player");
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace _1FirstSprite
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            spriteBatch.Draw(sprite, new Vector2(100,100), Color.White);
+            spriteBatch.Draw(playerSprite, new Vector2(100,100), Color.White);
             spriteBatch.End();
 
             base.Draw(gameTime);

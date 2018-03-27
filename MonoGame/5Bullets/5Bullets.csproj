@@ -41,7 +41,11 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Bullet.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Enemy.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -73,7 +77,9 @@
     <Content Include="Content\enemyRed3.png" />
     <Content Include="Content\enemyRed4.png" />
     <Content Include="Content\enemyRed5.png" />
+    <Content Include="Content\laserBlue01.png" />
     <Content Include="Content\player.png" />
+    <Content Include="Content\purple.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
