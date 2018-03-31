@@ -2,11 +2,10 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace _5Bullets
+namespace _6Explosions
 {
     public class Player
     {
-        private readonly Texture2D texture;
         private Rectangle drawRectangle;
         private KeyboardState previousKeyboardState;
 
@@ -15,10 +14,12 @@ namespace _5Bullets
         public Vector2 Position => drawRectangle.Location.ToVector2();
         public Vector2 PlayerSize => drawRectangle.Size.ToVector2();
         public Rectangle CollisionRectangle => drawRectangle;
+        public Rectangle DrawRectangle => drawRectangle;
+        public Texture2D Texture { get; }
 
         public Player(Texture2D texture, Rectangle drawRectangle)
         {
-            this.texture = texture;
+            Texture = texture;
             this.drawRectangle = drawRectangle;
         }
 
@@ -43,7 +44,7 @@ namespace _5Bullets
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, drawRectangle, Color.White);
+            spriteBatch.Draw(Texture, drawRectangle, Color.White);
         }
     }
 }

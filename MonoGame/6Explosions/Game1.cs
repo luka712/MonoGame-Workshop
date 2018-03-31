@@ -4,13 +4,14 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 
-namespace _5Bullets
+namespace _6Explosions
 {
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
     public class Game1 : Game
     {
+
         private float timeToSpawn = Constants.SpawnTime;
 
         GraphicsDeviceManager graphics;
@@ -70,6 +71,7 @@ namespace _5Bullets
                     enemyTextures[index++] = Content.Load<Texture2D>($"enemy{color}{i}");
                 }
             }
+            ParticleManager.Initialize(Content.Load<Texture2D>("fire00"));
 
         }
 
@@ -97,14 +99,14 @@ namespace _5Bullets
                 enemies[i].Update(gameTime);
 
                 // if enemy is out of screen bounds, remove it
-                if (worldRect.Intersects(enemies[i].CollisionRectange) == false)
+                if (worldRect.Intersects(enemies[i].CollisionRectangle) == false)
                 {
                     enemies.RemoveAt(i);
                     continue;
                 }
 
                 // check against player
-                if(enemies[i].CollisionRectange.Intersects(player.CollisionRectangle))
+                if (enemies[i].CollisionRectangle.Intersects(player.CollisionRectangle))
                 {
                     enemies.RemoveAt(i);
                 }
@@ -125,14 +127,17 @@ namespace _5Bullets
                 for (int j = enemies.Count - 1; j >= 0; j--)
                 {
                     // if collision
-                    if (playerBullets[i].CollisionRectange.Intersects(enemies[j].CollisionRectange))
+                    if (playerBullets[i].CollisionRectange.Intersects(enemies[j].CollisionRectangle))
                     {
+                        ParticleManager.ExplodeEnemy(enemies[j]);
                         playerBullets.RemoveAt(i);
                         enemies.RemoveAt(j);
-                        continue;
+                        break;
                     }
                 }
             }
+
+            ParticleManager.Update(gameTime);
 
 
             base.Update(gameTime);
@@ -144,11 +149,12 @@ namespace _5Bullets
 
             spriteBatch.Begin();
             spriteBatch.Draw(backgroundTexture, new Rectangle(0, 0, Constants.ScreenWidth, Constants.ScreenHeight), Color.White);
+            ParticleManager.Draw(spriteBatch);
             for (int i = 0; i < enemies.Count; i++)
             {
                 enemies[i].Draw(spriteBatch);
             }
-            for(int i = 0; i < playerBullets.Count;i++)
+            for (int i = 0; i < playerBullets.Count; i++)
             {
                 playerBullets[i].Draw(spriteBatch);
             }

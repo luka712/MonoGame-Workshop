@@ -1,14 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace _5Bullets
+namespace _6Explosions
 {
-    public class Bullet 
+    public class Bullet
     {
         private Rectangle drawRectangle;
         private readonly Texture2D texture;

@@ -13,6 +13,7 @@ namespace _3Player
         SpriteBatch spriteBatch;
 
         Player player;
+        Texture2D backgroundTexture;
 
         public Game1()
         {
@@ -49,6 +50,8 @@ namespace _3Player
             // TODO: use this.Content to load your game content here
             var texture = Content.Load<Texture2D>("player");
             player = new Player(texture, new Rectangle(100, 100, texture.Width / 2, texture.Height / 2));
+
+            backgroundTexture = Content.Load<Texture2D>("purple");
         }
 
         /// <summary>
@@ -71,8 +74,7 @@ namespace _3Player
                 Exit();
 
             // TODO: Add your update logic here
-            float elapsedTime = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
-            player.Update(elapsedTime);
+            player.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -87,6 +89,7 @@ namespace _3Player
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
+            spriteBatch.Draw(backgroundTexture, new Rectangle(0, 0, Constants.ScreenWidth, Constants.ScreenHeight), Color.White);
             player.Draw(spriteBatch);
             spriteBatch.End();
 

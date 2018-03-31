@@ -18,6 +18,7 @@ namespace _4Enemies
 
         Player player;
         List<Enemy> enemies = new List<Enemy>();
+        Texture2D backgroundTexture;
         Texture2D[] enemyTextures;
 
         Random random = new Random();
@@ -49,6 +50,7 @@ namespace _4Enemies
             var texture = Content.Load<Texture2D>("player");
             player = new Player(texture, new Rectangle(350, 450, texture.Width / 2, texture.Height / 2));
 
+            backgroundTexture = Content.Load<Texture2D>("purple");
             // create enemy textures
             enemyTextures = new Texture2D[20];
             var colors = new[] { "Black", "Blue", "Green", "Red" };
@@ -98,11 +100,11 @@ namespace _4Enemies
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
+            spriteBatch.Draw(backgroundTexture,new Rectangle(0,0, Constants.ScreenWidth, Constants.ScreenHeight), Color.White);
             player.Draw(spriteBatch);
             for(int i = 0; i < enemies.Count; i++)
             {
                 enemies[i].Draw(spriteBatch);
-
             }
             spriteBatch.End();
 
