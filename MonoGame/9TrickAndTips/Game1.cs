@@ -1,9 +1,10 @@
-﻿
+﻿#define DELTA_TIME
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace _9TrickAndTips
@@ -22,6 +23,8 @@ namespace _9TrickAndTips
         Vector2 position;
         float moveSpeed = 3f;
         float framerate;
+
+        List<Vector2> someVectors;
 
         public Game1()
         {
@@ -112,9 +115,21 @@ namespace _9TrickAndTips
             spriteBatch.Begin();
             spriteBatch.DrawString(font, $"Framerate: {framerate.ToString("n2")}", Vector2.One * 10, Color.White);
             spriteBatch.Draw(playerTexture, position, Color.White);
+            ShowParamsIssue(1, 2, 3);
+            Console.Write("{0}{1}{2}", 1, 2, 3.0, 4,5);
             spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+
+        private void ShowParamsIssue(params int[] someNumbers)
+        {
+            spriteBatch.DrawString(font, $"Type: {someNumbers.ToString()}", new Vector2(10, 30), Color.White);
+        }
+
+        private void ShowBoxingIssue(params object[] someNumbers)
+        {
+            spriteBatch.DrawString(font, $"Type: {someNumbers.ToString()}", new Vector2(10, 30), Color.White);
         }
     }
 }

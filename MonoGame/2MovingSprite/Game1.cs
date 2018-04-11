@@ -14,8 +14,9 @@ namespace _2MovingSprite
 
         Texture2D playerTexture;
         Vector2 position;
-        SpriteFont font;
         float moveSpeed = 0.3f;
+
+        SpriteFont font;
 
         public Game1()
         {
@@ -47,6 +48,7 @@ namespace _2MovingSprite
 
             // TODO: use this.Content to load your game content here
             playerTexture = Content.Load<Texture2D>("player");
+
             font = Content.Load<SpriteFont>("Font");
         }
 

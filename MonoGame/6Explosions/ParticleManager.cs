@@ -56,7 +56,7 @@ namespace _6Explosions
             }
         }
 
-        public static void Draw(SpriteBatch spriteBatch)
+        public static void Draw(SpriteBatch spriteBatch, SpriteFont font)
         {
             for (int i = activeParticlesList.Count - 1; i > 0; i--)
             {
@@ -64,6 +64,9 @@ namespace _6Explosions
                 spriteBatch.Draw(particle.Texture, particle.DrawRectangle, particle.SourceRectangle,
                     particle.Color, particle.Rotation, particle.Origin, SpriteEffects.None, 0f);
             }
+
+            spriteBatch.DrawString(font, $"Active particles count: {activeParticlesList.Count}", new Vector2(10, 10), Color.White);
+            spriteBatch.DrawString(font, $"Inactive particles count: {inactiveParticlesStack.Count}", new Vector2(10, 30), Color.White);
         }
 
         public static void ExplodeEnemy(Enemy enemy)

@@ -29,6 +29,8 @@ namespace _6Explosions
 
         Rectangle worldRect;
 
+        SpriteFont font;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -72,6 +74,8 @@ namespace _6Explosions
                 }
             }
             ParticleManager.Initialize(Content.Load<Texture2D>("fire00"));
+
+            font = Content.Load<SpriteFont>("Font");
 
         }
 
@@ -149,7 +153,7 @@ namespace _6Explosions
 
             spriteBatch.Begin();
             spriteBatch.Draw(backgroundTexture, new Rectangle(0, 0, Constants.ScreenWidth, Constants.ScreenHeight), Color.White);
-            ParticleManager.Draw(spriteBatch);
+            ParticleManager.Draw(spriteBatch, font);
             for (int i = 0; i < enemies.Count; i++)
             {
                 enemies[i].Draw(spriteBatch);
