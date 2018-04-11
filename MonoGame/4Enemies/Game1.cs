@@ -20,6 +20,7 @@ namespace _4Enemies
         List<Enemy> enemies = new List<Enemy>();
         Texture2D backgroundTexture;
         Texture2D[] enemyTextures;
+        SpriteFont font;
 
         Random random = new Random();
 
@@ -63,6 +64,7 @@ namespace _4Enemies
                 }
             }
 
+            font = Content.Load<SpriteFont>("font");
         }
 
         protected override void UnloadContent()
@@ -76,6 +78,7 @@ namespace _4Enemies
                 Exit();
 
             SpawnEnemy(gameTime);
+            player.Update(gameTime);
             
             // Why backwards ?
             for(int i = enemies.Count - 1; i >= 0; i--)
@@ -106,6 +109,7 @@ namespace _4Enemies
             {
                 enemies[i].Draw(spriteBatch);
             }
+            spriteBatch.DrawString(font, $"Enemies Count: {enemies.Count}", Vector2.One * 10, Color.White);
             spriteBatch.End();
 
             base.Draw(gameTime);

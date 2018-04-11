@@ -14,7 +14,8 @@ namespace _2MovingSprite
 
         Texture2D playerTexture;
         Vector2 position;
-        float moveSpeed = 0.1f;
+        SpriteFont font;
+        float moveSpeed = 0.3f;
 
         public Game1()
         {
@@ -46,6 +47,7 @@ namespace _2MovingSprite
 
             // TODO: use this.Content to load your game content here
             playerTexture = Content.Load<Texture2D>("player");
+            font = Content.Load<SpriteFont>("Font");
         }
 
         /// <summary>
@@ -103,6 +105,7 @@ namespace _2MovingSprite
             // TODO: Add your drawing code here
             spriteBatch.Begin();
             spriteBatch.Draw(playerTexture, position, Color.White);
+            spriteBatch.DrawString(font, $"Position: {position}", Vector2.One * 10, Color.White);
             spriteBatch.End();
 
             base.Draw(gameTime);

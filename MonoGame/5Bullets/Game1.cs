@@ -129,7 +129,7 @@ namespace _5Bullets
                     {
                         playerBullets.RemoveAt(i);
                         enemies.RemoveAt(j);
-                        continue;
+                        break;
                     }
                 }
             }
@@ -140,9 +140,10 @@ namespace _5Bullets
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin();
+           // spriteBatch.Begin(blendState: BlendState.Opaque);
             spriteBatch.Draw(backgroundTexture, new Rectangle(0, 0, Constants.ScreenWidth, Constants.ScreenHeight), Color.White);
             for (int i = 0; i < enemies.Count; i++)
             {
